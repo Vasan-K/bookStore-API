@@ -18,19 +18,24 @@ public class Inventory {
 	private String author;
 	private String bookName;
 	private int copies;
+	private int booklikes;
 	
 	public Inventory() {
 		
 	}
 	
-	public Inventory(int bookId, String author, String bookName, int copies) {
+	
+
+	public Inventory(int bookId, String author, String bookName, int copies, int booklikes) {
+		super();
 		this.bookId = bookId;
 		this.author = author;
 		this.bookName = bookName;
 		this.copies = copies;
+		this.booklikes = booklikes;
 	}
-	
-	
+
+
 
 	public int getBookId() {
 		return bookId;
@@ -62,6 +67,14 @@ public class Inventory {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public int getBooklikes() {
+		return booklikes;
+	}
+
+	public void setBooklikes(int booklikes) {
+		this.booklikes = booklikes;
 	}
 
 

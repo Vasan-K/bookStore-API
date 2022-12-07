@@ -10,7 +10,7 @@ public interface InventoryService {
 	Inventory getBookById(int bookId);
 	List<Inventory> getList();
 	//List<Inventory> getbookbyName();
-	//List<Inventory> getBookByAuthor(String author);
+	List<Inventory> getBookByAuthor(String author);
 	List<Inventory> getByBookName(String bookName);
 	//Inventory updateinv(Inventory inventory);
 	List<String> sortByLikes();

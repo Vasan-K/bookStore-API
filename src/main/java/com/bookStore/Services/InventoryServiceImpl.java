@@ -49,7 +49,7 @@ public class InventoryServiceImpl implements InventoryService{
 	
 	@Override
 	public List<Inventory> getByBookName(String bookName) {
-		List<Inventory> invBook = this.inventoryRepository.getByBookName(bookName);
+		List<Inventory> invBook = this.inventoryRepository.getBybookName(bookName);
 		for(Inventory in : invBook) {
 			if(in.getBookName().isEmpty()) {
 				throw new NullPointerException();
@@ -58,16 +58,31 @@ public class InventoryServiceImpl implements InventoryService{
 		return invBook;
 	}
 	
-	/*@Override
+	@Override
 	public List<Inventory> getBookByAuthor(String author) {
+//		List<String> books=new ArrayList<>();
 		List<Inventory> inventory = this.inventoryRepository.getByBookAuthor(author);
 		for(Inventory in : inventory) {
 			if(in.getAuthor().isEmpty()) {
-				throw new NullPointerException();
-			}
+				throw new NullPointerException();}
+//			}else {
+//				books.add(in.toString());
+//			}
 		}
 		return inventory;
-	}*/
+	}
+	
+	
+//	@Override
+//	public List<Inventory> getBookByAuthor(String author) {
+//		List<Inventory> inventory = this.inventoryRepository.getByBookAuthor(author);
+//		for(Inventory in : inventory) {
+//			if(in.getAuthor().isEmpty()) {
+//				throw new NullPointerException();
+//			}
+//		}
+//		return inventory;
+//	}
 	
 		
 		/*if(inventory.isPresent()) {

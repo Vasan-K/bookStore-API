@@ -31,12 +31,16 @@ public class WalletServiceImpl implements WalletService {
 
 	@Override
 	public Wallet updateMoney(Wallet wt) {
-        Optional<Wallet> wObj = this.walletRepository.findById((double) wt.getUserid());
+        Optional<Wallet> wObj = this.walletRepository.findById(wt.getUserid());
 		
 		if(wObj.isPresent()) {
 			 Wallet wlt = wObj.get();
-			 wlt.setUserAmt(wt.getUserAmt());
-			 return walletRepository.save(wt);
+			 if(wt.getUserAmt()%500==0) {
+				 wlt.setUserAmt(wt.getUserAmt());
+				 return walletRepository.save(wt);
+			 }else { 
+				 throw new NullPointerException();
+			 }
 		}else
 		{
 			throw new NullPointerException();

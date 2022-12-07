@@ -4,6 +4,7 @@ import java.util.List;
 //import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 //import com.BookStore.App.model.inventory;
 import com.bookstore.Model.Inventory;
@@ -19,17 +20,16 @@ public interface InventoryRepository extends JpaRepository<Inventory,Integer> {
 	        List<Inventory> getBookByAuthor(String author);  	*/ 
 	
 	
-	 @Query(value="Select * from Inventory i order by book_likes desc",nativeQuery = true)
+	 @Query(value="SELECT * FROM Inventory i order by booklikes desc",nativeQuery = true)
 		List<Inventory> sortByLikes();
-	
 	 
-	 @Query(value="Select i from Inventory i where i.author",nativeQuery=true)
-		List<Inventory> getByBookAuthor(String author);
+	 @Query(value="SELECT i FROM Inventory i where i.author=?1",nativeQuery=true)
+		List<Inventory> getByBookAuthor(@Param("author") String author);
 	 
-	 @Query(value="Select i from Inventory i where i.bookName",nativeQuery=true)
-		List<Inventory> getByBookName(String bookName);
+	 @Query(value="SELECT i FROM Inventory i where i.bookName=?1",nativeQuery=true)
+		List<Inventory> getBybookName(@Param("bookName") String bookName);
 	 
-	 @Query(value="Select * from inventory i order by dateadded desc",nativeQuery = true)
+	 @Query(value="SELECT * FROM Inventory i order by dateadded desc",nativeQuery = true)
 		List<Inventory> sortbydate();
 
 }
